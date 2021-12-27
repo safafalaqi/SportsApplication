@@ -98,9 +98,7 @@ class SportsTableViewController: UITableViewController, ImagePickerPressedDelega
         return cell
     }
     
-    
-   
-    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sport = sportList[indexPath.row]
         performSegue(withIdentifier: "sportSegue", sender: sport)
     }
@@ -123,8 +121,7 @@ class SportsTableViewController: UITableViewController, ImagePickerPressedDelega
   
     }
     //UPDATE
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let alert = UIAlertController(title: "Edit Sport", message: "edit sport", preferredStyle: UIAlertController.Style.alert)
         
         alert.addTextField(configurationHandler: nil)

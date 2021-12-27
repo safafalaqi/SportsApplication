@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PlayersTableViewController: UITableViewController {
 
@@ -16,8 +17,6 @@ class PlayersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
 
     }
     
@@ -97,27 +96,19 @@ class PlayersTableViewController: UITableViewController {
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
-    
-    //DELETE
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let player =  self.sport?.players![indexPath.row] as! Player
-        managedObjectContext.delete(player)
-         self.savePlayer()
-    }
+
     
     func savePlayer(){
         
         do {
-        
         try managedObjectContext.save()
         print("Successfully saved")
     } catch {
         print("Error when saving: \(error)")
     }
         tableView.reloadData()
-
     }
-
+   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sport?.players?.count ?? 0
     }
